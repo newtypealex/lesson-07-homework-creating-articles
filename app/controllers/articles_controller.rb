@@ -9,8 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    #make the new artcile record
-    puts 'Creating Article'
+    #make the new article record
     @article = Article.create(article_params)
     #redirect the user
     redirect_to articles_path
@@ -20,11 +19,11 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-private
+  private
 
-  def article_params
-     # using strong params to only permit the attributes (fields) that we explicitly allow
-     # returns a filtered params (hash) has with ONLY the attributes we allow through
-     params.require(:article).permit(:title, :body)
-  end
+    def article_params
+       # using strong params to only permit the attributes (fields) that we explicitly allow
+      # returns a filtered params (hash) has with ONLY the attributes we allow through
+      params.require(:article).permit(:title, :body)
+    end
 end
